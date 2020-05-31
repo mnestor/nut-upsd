@@ -7,20 +7,16 @@ if [ ! -e /etc/nut/.setup ]; then
     cp /etc/nut/local/ups.conf /etc/nut/ups.conf
   else
     if [ -z "$SERIAL" ]; then
-      cat <<EOF >>/etc/nut/ups.conf
-[$NAME]
-        driver = $DRIVER
-        port = $PORT
-        desc = "$DESCRIPTION"
-EOF
+      echo "[${NAME}]" >>/etc/nut/ups.conf
+      echo "  driver = ${DRIVER}" >>/etc/nut/ups.conf
+      echo "  port = ${PORT}" >>/etc/nut/ups.conf
+      echo "  desc = \"${DESCRIPTION}\"" >>/etc/nut/ups.conf
     else
-      cat <<EOF >>/etc/nut/ups.conf
-[$NAME]
-        driver = $DRIVER
-        port = $PORT
-        serial = "$SERIAL"
-        desc = "$DESCRIPTION"
-EOF
+      echo "[${NAME}]" >>/etc/nut/ups.conf
+      echo "  driver = ${DRIVER}" >>/etc/nut/ups.conf
+      echo "  port = ${PORT}" >>/etc/nut/ups.conf
+      echo "  serial = \"${SERIAL}\"" >>/etc/nut/ups.conf
+      echo "  desc = \"${DESCRIPTION}\"" >>/etc/nut/ups.conf
     fi
     if [ ! -z "$POLLINTERVAL" ]; then
       echo "        pollinterval = $POLLINTERVAL" >> /etc/nut/ups.conf
