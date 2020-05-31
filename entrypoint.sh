@@ -33,19 +33,15 @@ if [ ! -e /etc/nut/.setup ]; then
   if [ -e /etc/nut/local/upsd.users ]; then
     cp /etc/nut/local/upsd.users /etc/nut/upsd.users
   else
-    cat <<EOF >>/etc/nut/upsd.users
-[$API_USER]
-        password = $API_PASSWORD
-        upsmon $SERVER
-EOF
+    echo "[${API_USER}]" >>/etc/nut/upsd.users
+    echo "    password = ${API_PASSWORD}" >> /etc/nut/upsd.users
+    echo "    upsmon ${SERVER}" >> /etc/nut/upsd.users
   fi
   if [ -e /etc/nut/local/upsmon.conf ]; then
     cp /etc/nut/local/upsmon.conf /etc/nut/upsmon.conf
   else
-    cat <<EOF >>/etc/nut/upsmon.conf
-MONITOR $NAME@localhost 1 $API_USER $API_PASSWORD $SERVER
-RUN_AS_USER $USER
-EOF
+    echo "MONITOR ${NAME}@localhost 1 ${API_USER} ${API_PASSWORD} ${SERVER}" >>/etc/nut/upsmon.conf
+    echo "RUN_AS_USER ${USER}" >> /etc/nut/upsmon.conf
   fi
   touch /etc/nut/.setup
 fi
