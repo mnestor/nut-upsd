@@ -56,6 +56,11 @@ EOF
   touch /etc/nut/.setup
 fi
 
+if [ "${NOTIFYCMD}" != "" ]; then
+  chmod +x ${NOTIFYCMD}
+  echo "NOTIFYCMD ${NOTIFYCMD}" >> /etc/nut/upsmon.conf
+fi
+
 mkdir -m 2750 /dev/shm/nut
 chown $USER.$GROUP /dev/shm/nut
 [ -e /var/run/nut ] || ln -s /dev/shm/nut /var/run
