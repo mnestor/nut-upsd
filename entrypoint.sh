@@ -47,8 +47,7 @@ if [ ! -e /etc/nut/.setup ]; then
 fi
 
 if [ "${NOTIFYCMD}" != "" ]; then
-  chmod +x ${NOTIFYCMD}
-  echo "NOTIFYCMD ${NOTIFYCMD}" >> /etc/nut/upsmon.conf
+  echo "NOTIFYCMD /bin/sh ${NOTIFYCMD}" >> /etc/nut/upsmon.conf
 fi
 
 mkdir -m 2750 /dev/shm/nut
