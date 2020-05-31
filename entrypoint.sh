@@ -28,9 +28,7 @@ if [ ! -e /etc/nut/.setup ]; then
   if [ -e /etc/nut/local/upsd.conf ]; then
     cp /etc/nut/local/upsd.conf /etc/nut/upsd.conf
   else
-    cat <<EOF >>/etc/nut/upsd.conf
-LISTEN 0.0.0.0
-EOF
+    echo "LISTEN 0.0.0.0" >>/etc/nut/upsd.conf
   fi
   if [ -e /etc/nut/local/upsd.users ]; then
     cp /etc/nut/local/upsd.users /etc/nut/upsd.users
