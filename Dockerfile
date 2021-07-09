@@ -2,7 +2,7 @@ FROM alpine:3.14.0
 MAINTAINER Mike Nestor <mnestor79@gmail.com>
 ARG BUILD_DATE
 ARG VCS_REF
-ARG NUT_VERSION=2.7.4-r6
+ARG NUT_VERSION=2.7.4-r8
 ENV API_USER=upsmon \
   DESCRIPTION=UPS \
   DRIVER=usbhid-ups \
