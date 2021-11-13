@@ -1,4 +1,4 @@
-FROM alpine:3.14.2
+FROM alpine:3.14.3
 MAINTAINER Mike Nestor <mnestor79@gmail.com>
 ARG BUILD_DATE
 ARG VCS_REF
