@@ -16,9 +16,8 @@ ENV API_USER=upsmon \
   USER=nut \
   VENDORID=
 
-RUN echo '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' \
-  >>/etc/apk/repositories && \
-  apk add --update nut@testing=$NUT_VERSION \
+RUN \
+  apk add --update nut=$NUT_VERSION \
   libcrypto1.1 libssl1.1 net-snmp-libs
 
 EXPOSE 3493
